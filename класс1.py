@@ -10,12 +10,16 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     with conn:
         print('Connected by', addr)
         while True:
-            if not data:
-                break 
+            
             data = conn.recv(1024)
             print(data)             
             if (data) == b'hui':
                 print('success')
+
+
+
+            if not data:
+                break 
                 
             
             
