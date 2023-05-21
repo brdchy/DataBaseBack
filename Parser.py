@@ -22,8 +22,26 @@ def handle_client(conn, addr):
         print(command)
         
         print(f"{message[len(command)+1:]}")
+
+
         if "NewUser" in message:
-            database.write(f"{message[len(command)+1:]}")            
+            database.write(f"{message[len(command)+1:]}") 
+            newmessage = "Account created!"
+            conn.send(newmessage.encode('utf-8'))
+              #Entrance?begula:12345678
+        if "Entrance" in message:
+            flag=0
+            with open("users.txt") as f:
+                for i in f:
+                    if (f"{message[len(command)+1:]}") in i:
+                        flag+=1
+                        break
+            if flag!=0:
+                conn.send(("Accepted").encode('utf-8'))
+            else: conn.send(("Declined").encode('utf-8'))
+            
+
+
     conn.close()
     print(f"connection from {addr} closed")
 
@@ -47,3 +65,4 @@ if __name__ == "__main__":
 
 
 
+  
