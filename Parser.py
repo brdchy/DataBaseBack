@@ -1,16 +1,27 @@
 import socket
+from Database import Database
 
 HOST = '127.0.0.1'
 PORT = 65432
+database=Database("users.txt")
+
 
 def handle_client(conn, addr):
     print(f"connected: {addr}")
     while True:
         data = conn.recv(1024)
+        message=data.decode('utf-8')
         if not data:
             break
-        print(f"got message from {addr}: {data.decode('utf-8')}")
-        # Здесь вы можете обработать полученные данные, например, сохранить их в базе данных
+        print(f"got message from {addr}: {message}")
+        command=""
+        for i in message:
+            if i=="?":
+                break
+            else: command+=i
+        
+        if message[len(command)]=="NewUser":
+            database.write(message[len(command)+1:])
     conn.close()
     print(f"connection from {addr} closed")
 
