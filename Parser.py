@@ -20,8 +20,9 @@ def handle_client(conn, addr):
                 break
             else: command+=i
         
-        if message[len(command)]=="NewUser":
-            database.write(message[len(command)+1:])
+        if "NewUser" in message:
+            database.write(f"{message[len(command)+1:]}")
+            
     conn.close()
     print(f"connection from {addr} closed")
 
