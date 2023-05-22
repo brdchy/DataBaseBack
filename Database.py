@@ -11,13 +11,18 @@ class Database:
         self.db_file.seek(0)
         return self.db_file.readlines()
 
-    def search(self, key, value): # возможность поиска
-        self.db_file.seek(0)
-        result = []
-        for line in self.db_file:
-            if key in line and value in line:
-                result.append(line.strip())
-        return result
+    def searchfor(self, value):
+        flag=0
+        with open(self.db_name) as f:
+                for i in f:
+                    if (f"{value}") in i:
+                        flag+=1
+                        break
+        if flag!=0:
+                return True
+        else: return False
+
+    
 
     def update(self, key, value, new_data): # возможность обновления
         lines = self.read_all()
@@ -35,3 +40,5 @@ class Database:
         for line in lines:
             if not (key in line and value in line):
                 self.db_file.write(line)
+    def close(self):
+        self.db_file.close()
