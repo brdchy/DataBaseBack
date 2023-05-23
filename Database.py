@@ -1,10 +1,14 @@
-class Database:
+import user
+
+class Database: 
+
     def __init__(self, db_name):
         self.db_name = db_name
         self.db_file = open(db_name, "a+")
 
-    def write(self, data): # возможность записи
-        self.db_file.write(data)
+    def write(self, user: user): # возможность записи
+
+        self.db_file.write(f"{user.getInfo()}")
         self.db_file.write("\n")
 
     def read_all(self): # возможность чтения

@@ -1,11 +1,14 @@
+import book
+
 class BookingDatabase:
     def __init__(self, db_name):
         self.db_name = db_name
         self.db_file = open(db_name, "a+")
 
-    def write(self, data): # возможность записи
-        self.db_file.write(data)
-        self.db_file.write("\n")
+    def write(self, book: book): # возможность записи
+        self.db_file = open(self.db_name, "a+")
+        self.db_file.write(f"{book.getInfo()}")       
+        self.db_file.close()
 
     def read_all(self): # выгрузка всех строк из файла
         with open(self.db_name, "r") as file:
