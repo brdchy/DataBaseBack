@@ -38,7 +38,6 @@ def main():
          
         if "NewBooking" in command:
             bookingDB.write(f"{message}")
-            bookingDB.close()
             newmessage = "Booked!"
             conn.send(newmessage.encode('utf-8'))
               
