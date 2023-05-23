@@ -11,7 +11,7 @@ class Database:
         self.db_file.seek(0)
         return self.db_file.readlines()
 
-    def searchfor(self, value):
+    def searchfor(self, value: str) -> bool:
         flag=0
         with open(self.db_name) as f:
                 for i in f:

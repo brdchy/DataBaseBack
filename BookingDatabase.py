@@ -3,8 +3,7 @@ class BookingDatabase:
         self.db_name = db_name
         self.db_file = open(db_name, "a+")
 
-    def write(self, name, phone, time, notes): # запись в файл 4 параметров
-        data = f"Name: {name}\nPhone: {phone}\nTime: {time}\nNotes: {notes}\n"
+    def write(self, data): # возможность записи
         self.db_file.write(data)
         self.db_file.write("\n")
 
