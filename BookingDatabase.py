@@ -7,7 +7,7 @@ class BookingDatabase:
 
     def write(self, book: book): # возможность записи
         self.db_file = open(self.db_name, "a+")
-        self.db_file.write(f"{book.getInfo()}")       
+        self.db_file.write(book.getInfo())       
         self.db_file.close()
 
     def read_all(self): # выгрузка всех строк из файла

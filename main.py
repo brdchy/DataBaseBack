@@ -29,12 +29,15 @@ def main():
             login, password = message.split(":")
             new_user = User(login, password)
             database.write(new_user)
+            database.close()
             conn.send(("Account created!").encode( 'utf-8'))
               
         if "Entrance" in command:
-            
-            if database.searchfor(message):
-                conn.send(("Accepted!").encode('utf-8'))
+            accessed, user = database.searchfor(message)
+            if accessed:        
+                if "True" in user:
+                    conn.send(("Admin entered!").encode('utf-8'))
+                else: conn.send(("Accepted!").encode('utf-8'))        
             else: 
                 
                 conn.send(("Declined!").encode('utf-8'))

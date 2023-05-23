@@ -8,23 +8,24 @@ class Database:
 
     def write(self, user: user): # возможность записи
 
-        self.db_file.write(f"{user.getInfo()}")
+        self.db_file.write(user.getInfo())
         self.db_file.write("\n")
 
     def read_all(self): # возможность чтения
         self.db_file.seek(0)
         return self.db_file.readlines()
 
-    def searchfor(self, value: str) -> bool:
-        flag=0
+    def searchfor(self, value: str):
+        
+        
         with open(self.db_name) as f:
                 for i in f:
-                    if (f"{value}") in i:
-                        flag+=1
-                        break
-        if flag!=0:
-                return True
-        else: return False
+                    if (f"{value}") in i:                       
+                        return True, str(i)
+                        
+        
+                
+        return False
 
     
 

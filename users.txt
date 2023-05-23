@@ -1,5 +1,3 @@
-nikita:12345678
-fkjasdhfgdjsaf:agadfsgdsg
-begula:12345678
-lhgfdfghjk:kjhgfdfghjk
-helloe:hellohello
+nikita:12345678:True
+begula:12345678:True
+loh2000:12345678:False
