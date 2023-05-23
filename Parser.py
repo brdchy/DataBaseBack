@@ -1,11 +1,3 @@
-import socket
-from Database import Database
-
-HOST = '127.0.0.1'
-PORT = 65432
-database=Database("users.txt")
-
-
 def handle_client(conn, addr):
     
     while True:
