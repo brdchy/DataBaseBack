@@ -7,7 +7,7 @@ database=Database("users.txt")
 
 
 def handle_client(conn, addr):
-    print(f"connected: {addr}")
+    
     while True:
         data = conn.recv(1024)
         message=data.decode('utf-8')
