@@ -41,5 +41,17 @@ class Database:
         for line in lines:
             if not (key in line and value in line):
                 self.db_file.write(line)
+
+
+    def unload_users(self): # выгрузка пользователей с возможность взаимодействия в цикле
+        a = ""
+        with open(self.db_file, "r") as file:
+            for line in file:
+                a += str(line) 
+
+        return a
+            
+
+
     def close(self):
         self.db_file.close()

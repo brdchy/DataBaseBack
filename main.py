@@ -61,6 +61,12 @@ def main():
                 conn.send(("Booked!").encode('utf-8'))
             else:
                 conn.send(("This book is taken!").encode('utf-8'))
+
+        if "UnloadUsers" in command:
+
+            UnUsers = database.unload_users()
+            conn.send((f"{UnUsers}").encode('utf-8'))
+            
               
             
 
