@@ -34,13 +34,21 @@ def main():
               
         if "Entrance" in command:
             accessed, user = database.searchfor(message)
-            if accessed:        
-                if "True" in user:
-                    conn.send(("Admin entered!").encode('utf-8'))
-                else: conn.send(("Accepted!").encode('utf-8'))        
+            if accessed:
+                conn.send(("Accepted!").encode('utf-8'))
             else: 
                 
                 conn.send(("Declined!").encode('utf-8'))
+
+        if "Admin" in command:
+            accessed, user = database.searchfor(message)
+            if accessed:        
+                if "True" in user:
+                    conn.send(("Admin entered!").encode('utf-8'))
+                else: conn.send(("You don't have admin permissions").encode('utf-8'))        
+            else:       
+                conn.send(("Declined!").encode('utf-8'))
+         
          
         if "NewBooking" in command:
            

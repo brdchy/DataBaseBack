@@ -25,7 +25,7 @@ class Database:
                         
         
                 
-        return False
+        return False, ""
 
     
 
