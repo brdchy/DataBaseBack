@@ -4,4 +4,3 @@ loh2000:12345678:False
 begula:12345678:False
 begula:12345678:False
 Akeksandr:12345678:False
-kornishon:11111111:False

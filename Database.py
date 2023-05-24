@@ -52,3 +52,25 @@ class Database:
 
     def close(self):
         self.db_file.close()
+
+        
+    def delete_record(self, login): # удаление строк по логину пользователя
+        with open(self.db_name, "r") as file:
+            lines = file.readlines()
+
+        deleted = False
+        updated_lines = []
+        for line in lines:
+            if login not in line:
+                updated_lines.append(line)
+            else:
+                deleted = True
+
+        if not deleted:
+            return False  # Запись с заданным логином не найдена
+
+
+        with open(self.db_name, "w") as file:
+            file.writelines(updated_lines)
+
+        return True  # Запись успешно удалена

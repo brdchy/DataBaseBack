@@ -74,6 +74,15 @@ def main():
             UnTables = tablesDB.unload_tables()
             conn.send((f"{UnTables}").encode('utf-8'))
             
+        if "DeleteUser" in command:
+            exists = database.searchfor(message)
+            if exists:
+                database.delete_record(message)
+
+                conn.send(("User deleted!").encode('utf-8'))
+            else:
+                conn.send(("User not found!").encode('utf-8'))
+            
 
 if __name__ == "__main__":
     main()
