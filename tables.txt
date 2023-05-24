@@ -1,5 +1,5 @@
-1:vip
-2:base
-3:sigma
-4:incel
-5:gigachad
+1-vip
+2-base
+3-sigma
+4-incel
+5-gigachad

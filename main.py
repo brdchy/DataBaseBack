@@ -62,7 +62,7 @@ def main():
                 bookingDB.write(new_book)             
                 conn.send(("Booked!").encode('utf-8'))
             else:
-                conn.send(("This book is taken!").encode('utf-8'))
+                conn.send(("This table is taken!").encode('utf-8'))
 
         if "UnloadUsers" in command:
 
