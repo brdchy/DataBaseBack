@@ -1,9 +1,9 @@
 class Table:
 
-    def __init__(self, numbertable, is_booked = False):
+    def __init__(self, numbertable, tables_role):
 
         self.numbertable = numbertable
-        self.is_booked = is_booked
+        self.tables_role = tables_role
 
     def getInfo(self):
-        return str(f"{self.numbertable}:{self.is_booked}")
+        return str(f"{self.numbertable}:{self.tables_role}")

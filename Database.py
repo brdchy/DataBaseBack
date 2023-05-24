@@ -12,10 +12,6 @@ class Database:
         self.db_file.write("\n")
         self.db_file.close()
 
-    def read_all(self): # возможность чтения
-        self.db_file.seek(0)
-        return self.db_file.readlines()
-
     def searchfor(self, value: str):                
         with open(self.db_name) as f:
                 for i in f:

@@ -1,6 +1,7 @@
 from book import Book
 
 class BookingDatabase:
+
     def __init__(self, db_name):
         self.db_name = db_name
         self.db_file = open(db_name, "a+")
@@ -17,11 +18,6 @@ class BookingDatabase:
         self.db_file = open(self.db_name, "a+")
         self.db_file.write(book.getInfo())       
         self.db_file.close()
-
-    def read_all(self): # выгрузка всех строк из файла
-        with open(self.db_name, "r") as file:
-            lines = file.readlines()
-        return lines
     
     def delete_record(self, login): # удаление строк по логину пользователя
         with open(self.db_name, "r") as file:

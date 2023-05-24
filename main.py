@@ -4,13 +4,14 @@ from Parser import handle_client
 from BookingDatabase import BookingDatabase
 from book import Book
 from user import User
-from table import Table
+from TablesDatabase import TablesDatabase
 
 
 HOST = '127.0.0.1'
 PORT = 65432
-database=Database("users.txt")
-bookingDB=BookingDatabase("booking.txt")
+database = Database("users.txt")
+bookingDB = BookingDatabase("booking.txt")
+tablesDB = TablesDatabase("tables.txt")
 
 def main():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -55,7 +56,7 @@ def main():
          
         if "NewBooking" in command:
            
-            name, phone, date, time, numbertable, notes = message.split(":")
+            name, phone, date, time, numbertable, notes = message.split(",")
             new_book=Book(name, phone, date, time, numbertable, notes)
             if bookingDB.isfree(str(time)): 
                 bookingDB.write(new_book)             
@@ -68,7 +69,10 @@ def main():
             UnUsers = database.unload_users()
             conn.send((f"{UnUsers}").encode('utf-8'))
             
-              
+        if "UnloadTables" in command:
+            
+            UnTables = tablesDB.unload_tables()
+            conn.send((f"{UnTables}").encode('utf-8'))
             
 
 if __name__ == "__main__":

@@ -1,0 +1,5 @@
+1:vip
+2:base
+3:noob
+4:chad
+5:gigachad
