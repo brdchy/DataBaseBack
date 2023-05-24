@@ -4,6 +4,7 @@ from Parser import handle_client
 from BookingDatabase import BookingDatabase
 from book import Book
 from user import User
+from table import Table
 
 
 HOST = '127.0.0.1'
@@ -54,8 +55,8 @@ def main():
          
         if "NewBooking" in command:
            
-            name, phone, time, notes = message.split(",")
-            new_book=Book(name, phone, time, notes)
+            name, phone, date, time, numbertable, notes = message.split(":")
+            new_book=Book(name, phone, date, time, numbertable, notes)
             if bookingDB.isfree(str(time)): 
                 bookingDB.write(new_book)             
                 conn.send(("Booked!").encode('utf-8'))
