@@ -60,9 +60,9 @@ def main():
             new_book=Book(name, phone, table, time, notes)
             if bookingDB.isfree(str(time)): 
                 bookingDB.write(new_book)             
-                conn.send(("Booked!").encode('utf-8'))
+                conn.send(("T").encode('utf-8'))
             else:
-                conn.send(("This table is taken!").encode('utf-8'))
+                conn.send(("F").encode('utf-8'))
 
         if "UnloadUsers" in command:
 
