@@ -8,7 +8,8 @@ class Database:
 
     def write(self, user: user): # возможность записи
         self.db_file = open(self.db_name, "a+")
-        self.db_file.write(user.getInfo())       
+        self.db_file.write(user.getInfo()) 
+        self.db_file.write("\n")
         self.db_file.close()
 
     def read_all(self): # возможность чтения
@@ -45,7 +46,7 @@ class Database:
 
     def unload_users(self): # выгрузка пользователей с возможность взаимодействия в цикле
         a = ""
-        with open(self.db_file, "r") as file:
+        with open(self.db_name, "r") as file:
             for line in file:
                 a += str(line) 
 
