@@ -7,24 +7,20 @@ class Database:
         self.db_file = open(db_name, "a+")
 
     def write(self, user: user): # возможность записи
-
-        self.db_file.write(user.getInfo())
-        self.db_file.write("\n")
+        self.db_file = open(self.db_name, "a+")
+        self.db_file.write(user.getInfo())       
+        self.db_file.close()
 
     def read_all(self): # возможность чтения
         self.db_file.seek(0)
         return self.db_file.readlines()
 
-    def searchfor(self, value: str):
-        
-        
+    def searchfor(self, value: str):                
         with open(self.db_name) as f:
                 for i in f:
                     if (f"{value}") in i:                       
                         return True, str(i)
-                        
-        
-                
+                                              
         return False, ""
 
     

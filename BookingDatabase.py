@@ -1,11 +1,19 @@
-import book
+from book import Book
 
 class BookingDatabase:
     def __init__(self, db_name):
         self.db_name = db_name
         self.db_file = open(db_name, "a+")
 
-    def write(self, book: book): # возможность записи
+    def isfree(self, time: str):
+        with open(self.db_name) as f:
+                for i in f:
+                    if time in i:
+                        return False 
+                else: return True
+  
+
+    def write(self, book: Book): # возможность записи
         self.db_file = open(self.db_name, "a+")
         self.db_file.write(book.getInfo())       
         self.db_file.close()

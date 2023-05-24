@@ -25,12 +25,14 @@ def main():
         command, message = handle_client(conn, addr)
         
         if "NewUser" in command:
-            
-            login, password = message.split(":")
-            new_user = User(login, password)
-            database.write(new_user)
-            database.close()
-            conn.send(("Account created!").encode( 'utf-8'))
+            exists, user = database.searchfor(message)
+            if not exists:
+                login, password = message.split(":")
+                new_user = User(login, password)
+                database.write(new_user)
+                database.close()
+                conn.send(("Account created!").encode( 'utf-8'))
+            else: conn.send(("Account exists!").encode( 'utf-8'))
               
         if "Entrance" in command:
             accessed, user = database.searchfor(message)
@@ -54,8 +56,11 @@ def main():
            
             name, phone, time, notes = message.split(",")
             new_book=Book(name, phone, time, notes)
-            bookingDB.write(new_book)             
-            conn.send(("Booked!").encode('utf-8'))
+            if bookingDB.isfree(str(time)): 
+                bookingDB.write(new_book)             
+                conn.send(("Booked!").encode('utf-8'))
+            else:
+                conn.send(("This book is taken!").encode('utf-8'))
               
             
 
