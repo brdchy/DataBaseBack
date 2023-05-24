@@ -56,8 +56,8 @@ def main():
          
         if "NewBooking" in command:
            
-            name, phone, date, time, numbertable, notes = message.split(",")
-            new_book=Book(name, phone, date, time, numbertable, notes)
+            name, phone, table, time, notes = message.split(",")
+            new_book=Book(name, phone, table, time, notes)
             if bookingDB.isfree(str(time)): 
                 bookingDB.write(new_book)             
                 conn.send(("Booked!").encode('utf-8'))
